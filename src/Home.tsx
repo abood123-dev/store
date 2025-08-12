@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export interface item
 {
@@ -50,23 +50,30 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Our store</h1>
-      <input placeholder='search for your prodect' value={search} onChange={(e)=>handlesearch(e.target.value)}/>
+      <h1 className='our'>Our store</h1>
+      <div className='sss'>
+      <input className='search' placeholder='search for your prodect' value={search} onChange={(e)=>handlesearch(e.target.value)}/>
          <button onClick={sortAsc}>Sort Price ↑</button>
       <button onClick={sortDesc}>Sort Price ↓</button>
       <button onClick={showall}>Show all</button>
+      </div>
+      <div className='items'>
       {Items.map((item:item)=>
         {
             return(
             <>
-            <Link key={item.id} to={`/details/${item.id}`}>  
+            <Link key={item.id} to={`/details/${item.id}`}>
+            <div className='item'>  
+            <img src={item.image} className='itemimg'/>  
             <div>{item.title}</div> 
             <div>{item.category}</div>
-            <div>{item.price}</div>   
+            <div>{item.price}</div>
+            </div>   
            </Link>            
             </>
             )
         })}
+        </div>
     </div>
   )
 }

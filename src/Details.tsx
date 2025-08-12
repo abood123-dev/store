@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import type { item } from './Home'; 
 import { useParams } from 'react-router-dom';
 const Details = () => {
