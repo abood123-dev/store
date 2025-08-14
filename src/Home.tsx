@@ -13,6 +13,7 @@ const Home = () => {
     const [Items,setitems]=useState<item[]>([]);
      const [Seconditems,setsecond]=useState<item[]>([]);
     const [search,setsearch]=useState<string>("");
+    const [loading, setLoading] = useState(true);
     const handlesearch=(value:string)=>
       {
         setsearch(value);
@@ -42,10 +43,13 @@ const Home = () => {
       {
         setitems(data);
         setsecond(data);
+         setLoading(false);
       }
       )
     },[])
-  
+    if (loading) {
+    return <div className="loading">Loading just wait few seconds ...</div>;
+  }
 
 
   return (
@@ -65,9 +69,9 @@ const Home = () => {
             <Link key={item.id} to={`/details/${item.id}`}>
             <div className='item'>  
             <img src={item.image} className='itemimg'/>  
-            <div>{item.title}</div> 
-            <div>{item.category}</div>
-            <div>{item.price}</div>
+            <div>Title : {item.title}</div> 
+            <div> category : {item.category}</div>
+            <div>price : {item.price}</div>
             </div>   
            </Link>            
             </>
